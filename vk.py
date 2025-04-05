@@ -6,7 +6,7 @@ CHAT_ID = '5671920054'  # Example: '123456789'
 bot = telebot.TeleBot(TOKEN)
 
 # File Path inside EC2
-file_path = '/home/ec2-user/bot.py'  # သင့် bot.py ရဲ့ တည်နေရာ
+file_path = '/home/ec2-user/bot.env'  # သင့် bot.py ရဲ့ တည်နေရာ
 
 # Send file
 try:
