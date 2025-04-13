@@ -1,17 +1,21 @@
 import telebot
 
 # Telegram Config
-TOKEN = '8057302563:AAHP3pluJYyNDDlWrDVjoc9uuzTmZW-4uCw'
-CHAT_ID = '5671920054'  # Example: '123456789'
+TOKEN = '8057302563:AAHP3pluJYyNDDlWrDVjoc9uuzTmZW-4uCw'  # WARNING: Regenerate this token for security
+CHAT_ID = '5671920054'  # Replace with your actual chat ID
 bot = telebot.TeleBot(TOKEN)
 
-# File Path inside EC2
-file_path = '/home/ec2-user/bot.env'  # သင့် bot.py ရဲ့ တည်နေရာ
+# File paths inside EC2
+file_paths = [
+    '/home/ec2-user/bot.env',
+    '/home/ec2-user/bot.py'
+]
 
-# Send file
-try:
-    with open(file_path, 'rb') as f:
-        bot.send_document(CHAT_ID, f)
-    print("✅ bot.py has been sent to Telegram.")
-except Exception as e:
-    print(f"❌ Failed to send file: {e}")
+# Send files to Telegram
+for file_path in file_paths:
+    try:
+        with open(file_path, 'rb') as f:
+            bot.send_document(CHAT_ID, f)
+        print(f"✅ {file_path} has been sent to Telegram.")
+    except Exception as e:
+        print(f"❌ Failed to send {file_path}: {e}")
